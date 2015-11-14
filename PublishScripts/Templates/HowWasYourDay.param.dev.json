@@ -1,0 +1,29 @@
+{
+  "siteName": {
+    "value": "HowWasYourDay"
+  },
+  "hostingPlanName": {
+    "value": "DefaultServerFarm"
+  },
+  "siteLocation": {
+    "value": "North Europe"
+  },
+  "sku": {
+    "value": "Standard"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "siteMode": {
+    "value": "Limited"
+  },
+  "computeMode": {
+    "value": "0"
+  },
+  "subscriptionId": {
+    "value": "faab6e26-048a-4267-b6f2-a4f024f3636e"
+  },
+  "resourceGroup": {
+    "value": "Default-Web-NorthEurope"
+  }
+}

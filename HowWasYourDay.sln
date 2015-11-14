@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{63ECC2F2-628F-43FB-A595-15B3276FE5DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{93B90CF1-8FE8-4702-8FDC-DDE74B810C8E}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+		NuGet.Config = NuGet.Config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{802260E0-E5E2-4771-87C2-E01580072C44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{D5A9B788-40D6-44DD-963A-C0CF84F7164B}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{8ED66DD8-D6F3-4EA3-AF21-18AFCB855D36}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\HowWasYourDay.json = PublishScripts\Templates\HowWasYourDay.json
+		PublishScripts\Templates\HowWasYourDay.param.dev.json = PublishScripts\Templates\HowWasYourDay.param.dev.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HowWasYourDay", "src\HowWasYourDay\HowWasYourDay.xproj", "{859D0C38-1F57-43F2-96BC-2D5D9B3D74B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{859D0C38-1F57-43F2-96BC-2D5D9B3D74B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{859D0C38-1F57-43F2-96BC-2D5D9B3D74B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{859D0C38-1F57-43F2-96BC-2D5D9B3D74B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{859D0C38-1F57-43F2-96BC-2D5D9B3D74B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D5A9B788-40D6-44DD-963A-C0CF84F7164B} = {802260E0-E5E2-4771-87C2-E01580072C44}
+		{8ED66DD8-D6F3-4EA3-AF21-18AFCB855D36} = {802260E0-E5E2-4771-87C2-E01580072C44}
+		{859D0C38-1F57-43F2-96BC-2D5D9B3D74B1} = {63ECC2F2-628F-43FB-A595-15B3276FE5DE}
+	EndGlobalSection
+EndGlobal
