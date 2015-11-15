@@ -2,20 +2,40 @@
     ViewData["Title"] = "How was your day?";
 }
 
-<div class="row">
-    <div class="col-md-12">
-
-        <div id="my_camera"></div>
-
-        <!-- A button for taking snaps -->
-        <form>
-            <input type=button value="Take Snapshot" onClick="take_snapshot()">
-        </form>
-        @using (Html.BeginForm())
-        {
-            <div id="results"></div>
-            
-            <button type="submit">S</button>
-        }
+<div ng-app="EmotionApp">
+    <div ng-controller="EmotionCtrl" ng-init="loadDepartments()">
+        <h1>{{title}}</h1>
+        <div ng-class="{hide: departmentSelected}">
+            <div ng-repeat="option in options">
+                <button ng-click="selectDepartment(option)" ng-disabled="working">{{option}}</button>
+            </div>
+        </div>
+        <div ng-class="{hide: imageCaptured}">
+            <div ng-class="{show: departmentSelected, hide: !departmentSelected}">
+                <div id="camera"></div>
+                <button ng-click="capture()" ng-disabled="working">Snap</button>
+            </div>
+        </div>
+        <div ng-class="{show: imageCaptured, hide: !imageCaptured}">
+            <div>
+                <img src="{{imageDataUri}}" />
+                <div ng-repeat="emotion in emotions">
+                    <div>Anger: {{emotion.Scores.Anger}}</div>
+                    <div>Contempt: {{emotion.Scores.Contempt}}</div>
+                    <div>Disgust: {{emotion.Scores.Disgust}}</div>
+                    <div>Fear: {{emotion.Scores.Fear}}</div>
+                    <div>Happiness: {{emotion.Scores.Happiness}}</div>
+                    <div>Sadness: {{emotion.Scores.Neutral}}</div>
+                    <div>Sadness: {{emotion.Scores.Sadness}}</div>
+                    <div>Surprise: {{emotion.Scores.Surprise}}</div>
+                    <br/>
+                    <div>Left: {{emotion.FaceRectangle.Left}}</div>
+                    <div>Top: {{emotion.FaceRectangle.Top}}</div>
+                    <div>Width: {{emotion.FaceRectangle.Width}}</div>
+                    <div>Height: {{emotion.FaceRectangle.Height}}</div>
+                </div>
+            </div>
+            <button ng-click="loadDepartments()" ng-disabled="working">Next</button>
+        </div>
     </div>
 </div>
