@@ -38,20 +38,24 @@
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery">
 
+
         </script>
         <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+
 
         </script>
         <script src="https://ajax.aspnetcdn.com/ajax/hammer.js/2.0.4/hammer.min.js"
                 asp-fallback-src="~/lib/hammer.js/hammer.js"
                 asp-fallback-test="window.Hammer">
 
+
         </script>
         <script src="https://ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/js/bootstrap-touch-carousel.js"
                 asp-fallback-src="~/lib/bootstrap-touch-carousel/dist/js/bootstrap-touch-carousel.js"
                 asp-fallback-test="window.Hammer && window.Hammer.Instance">
+
 
         </script>
         <script src="~/lib/webcamjs/webcam.min.js" asp-append-version="true"></script>
@@ -61,8 +65,8 @@
     <!-- Configure a few settings and attach camera -->
     <script language="JavaScript">
         Webcam.set({
-            width: 640,
-            height: 480,
+            width: 960,
+            height: 720,
             dest_width: 640,
             dest_height: 480,
             image_format: 'jpeg',
@@ -77,8 +81,8 @@
             Webcam.snap(function (data_uri) {
                 // display results in page
                 document.getElementById('results').innerHTML =
-					'<h2>Here is your large image:</h2>' +
-					'<img src="' + data_uri + '"/>';
+					'<img src="' + data_uri + '"/>'
+              + '<input id="image" name="image" type="hidden" value="' + data_uri + '"/>';
             });
         }
     </script>

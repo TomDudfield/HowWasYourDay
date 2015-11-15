@@ -1,4 +1,4 @@
-﻿{
+{
   "webroot": "wwwroot",
   "version": "1.0.0-*",
 
@@ -14,7 +14,8 @@
     "Microsoft.Framework.Logging": "1.0.0-beta8",
     "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
     "Microsoft.Framework.Logging.Debug": "1.0.0-beta8",
-    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-beta8"
+    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-beta8",
+    "Microsoft.AspNet.WebApi.Client": "5.2.3"
   },
 
   "commands": {
@@ -22,8 +23,10 @@
   },
 
   "frameworks": {
-    "dnx451": { },
-    "dnxcore50": { }
+    "dnx451": {
+      "dependencies": {
+      }
+    }
   },
 
   "exclude": [
