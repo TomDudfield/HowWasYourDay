@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using ImageProcessor;
-using ImageProcessor.Imaging;
-using ImageProcessor.Processors;
 using Microsoft.AspNet.Mvc;
 using Microsoft.ProjectOxford.Emotion;
 using Microsoft.ProjectOxford.Emotion.Contract;
