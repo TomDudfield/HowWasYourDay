@@ -2,7 +2,6 @@
   "name": "ASP.NET",
   "private": true,
   "dependencies": {
-    "angular": "1.4.7",
-    "webcamjs": "1.0.4"
+    "angular": "1.4.7"
   }
 }

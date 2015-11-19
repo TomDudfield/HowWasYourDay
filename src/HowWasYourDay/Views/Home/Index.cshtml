@@ -2,32 +2,27 @@
     ViewData["Title"] = "How was your day?";
 }
 
-<div ng-app="EmotionApp">
-    <div ng-controller="EmotionCtrl" ng-init="loadDepartments()">
-        <h1>{{title}}</h1>
+<div class="container" ng-app="EmotionApp">
+    <div ng-controller="EmotionCtrl" ng-init="selectDepartment('2')">@*ng-init="loadDepartments()"*@
+        @*<h1>{{title}}</h1>*@
         <div ng-class="{hide: departmentSelected}">
             <div ng-repeat="option in options">
-                <button ng-click="selectDepartment(option)" ng-disabled="working">{{option}}</button>
+                <button class="btn" ng-click="selectDepartment(option)" ng-disabled="working">{{option}}</button>
             </div>
         </div>
         <div ng-class="{hide: imageCaptured}">
             <div ng-class="{show: departmentSelected, hide: !departmentSelected}">
-                <div id="camera"></div>
-                <button ng-click="capture()" ng-disabled="working">Snap</button>
+                <video id="webcam" autoplay></video>
+                <button class="btn" ng-click="capture()" ng-disabled="working">Capture my day</button>
             </div>
         </div>
         <div ng-class="{show: imageCaptured, hide: !imageCaptured}">
             <div>
+                <canvas id="photo" style="display:none"></canvas>
                 <img src="{{imageDataUri}}" />
                 <div ng-repeat="emotion in emotions">
-                    <div>Anger: {{emotion.Scores.Anger}}</div>
-                    <div>Contempt: {{emotion.Scores.Contempt}}</div>
-                    <div>Disgust: {{emotion.Scores.Disgust}}</div>
-                    <div>Fear: {{emotion.Scores.Fear}}</div>
-                    <div>Happiness: {{emotion.Scores.Happiness}}</div>
-                    <div>Sadness: {{emotion.Scores.Neutral}}</div>
-                    <div>Sadness: {{emotion.Scores.Sadness}}</div>
-                    <div>Surprise: {{emotion.Scores.Surprise}}</div>
+                    <div>TopScore: {{emotion.Scores.TopScore}}</div>
+                    <div>TopScoreType: {{emotion.Scores.TopScoreType}}</div>
                     <br/>
                     <div>Left: {{emotion.FaceRectangle.Left}}</div>
                     <div>Top: {{emotion.FaceRectangle.Top}}</div>
@@ -35,7 +30,8 @@
                     <div>Height: {{emotion.FaceRectangle.Height}}</div>
                 </div>
             </div>
-            <button ng-click="loadDepartments()" ng-disabled="working">Next</button>
+            <button class="btn" ng-click="selectDepartment('2')" ng-disabled="working">Next face</button>
+            @*<button ng-click="loadDepartments()" ng-disabled="working">Next</button>*@
         </div>
     </div>
 </div>

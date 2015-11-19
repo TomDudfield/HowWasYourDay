@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using ImageProcessor;
+using ImageProcessor.Imaging;
+using ImageProcessor.Processors;
 using Microsoft.AspNet.Mvc;
 using Microsoft.ProjectOxford.Emotion;
 using Microsoft.ProjectOxford.Emotion.Contract;
@@ -22,9 +25,15 @@ namespace HowWasYourDay.Controllers
             var emotionServiceClient = new EmotionServiceClient("e5d15d97c41c4aa7bf042af46bb02e3f");
             byte[] bytes = Convert.FromBase64String(upload.Image.Replace("data:image/jpeg;base64,", ""));
 
-            using (var memoryStream = new MemoryStream(bytes))
+            using (var inputStream = new MemoryStream(bytes))
             {
-                Emotion[] emotions = emotionServiceClient.RecognizeAsync(memoryStream).Result;
+                Emotion[] emotions = emotionServiceClient.RecognizeAsync(inputStream).Result;
+
+                foreach (var emotion in emotions)
+                {
+                    emotion.Scores.GetTopScore();
+                }
+
                 return emotions;
             }
         }

@@ -2,7 +2,28 @@
   "locked": false,
   "version": 2,
   "targets": {
-    "DNX,Version=v4.5.1": {
+    "DNX,Version=v4.6": {
+      "ImageProcessor/2.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/ImageProcessor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/ImageProcessor.dll": {}
+        }
+      },
+      "ImageProcessor.Web/4.4.0": {
+        "type": "package",
+        "dependencies": {
+          "ImageProcessor": "2.3.0"
+        },
+        "compile": {
+          "lib/net45/ImageProcessor.Web.dll": {}
+        },
+        "runtime": {
+          "lib/net45/ImageProcessor.Web.dll": {}
+        }
+      },
       "Microsoft.AspNet.Antiforgery/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -1519,11 +1540,15 @@
           "System.Runtime": "4.0.0",
           "System.Runtime.Extensions": "4.0.0"
         },
+        "frameworkAssemblies": [
+          "mscorlib",
+          "System.Numerics"
+        ],
         "compile": {
-          "ref/dotnet/System.Numerics.Vectors.dll": {}
+          "ref/net46/System.Numerics.Vectors.dll": {}
         },
         "runtime": {
-          "lib/dotnet/System.Numerics.Vectors.dll": {}
+          "lib/net46/System.Numerics.Vectors.dll": {}
         }
       },
       "System.Reflection/4.0.0": {
@@ -1642,7 +1667,28 @@
         }
       }
     },
-    "DNX,Version=v4.5.1/win7-x86": {
+    "DNX,Version=v4.6/win7-x86": {
+      "ImageProcessor/2.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/ImageProcessor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/ImageProcessor.dll": {}
+        }
+      },
+      "ImageProcessor.Web/4.4.0": {
+        "type": "package",
+        "dependencies": {
+          "ImageProcessor": "2.3.0"
+        },
+        "compile": {
+          "lib/net45/ImageProcessor.Web.dll": {}
+        },
+        "runtime": {
+          "lib/net45/ImageProcessor.Web.dll": {}
+        }
+      },
       "Microsoft.AspNet.Antiforgery/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -3162,11 +3208,15 @@
           "System.Runtime": "4.0.0",
           "System.Runtime.Extensions": "4.0.0"
         },
+        "frameworkAssemblies": [
+          "mscorlib",
+          "System.Numerics"
+        ],
         "compile": {
-          "ref/dotnet/System.Numerics.Vectors.dll": {}
+          "ref/net46/System.Numerics.Vectors.dll": {}
         },
         "runtime": {
-          "lib/dotnet/System.Numerics.Vectors.dll": {}
+          "lib/net46/System.Numerics.Vectors.dll": {}
         }
       },
       "System.Reflection/4.0.0": {
@@ -3285,7 +3335,28 @@
         }
       }
     },
-    "DNX,Version=v4.5.1/win7-x64": {
+    "DNX,Version=v4.6/win7-x64": {
+      "ImageProcessor/2.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/ImageProcessor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/ImageProcessor.dll": {}
+        }
+      },
+      "ImageProcessor.Web/4.4.0": {
+        "type": "package",
+        "dependencies": {
+          "ImageProcessor": "2.3.0"
+        },
+        "compile": {
+          "lib/net45/ImageProcessor.Web.dll": {}
+        },
+        "runtime": {
+          "lib/net45/ImageProcessor.Web.dll": {}
+        }
+      },
       "Microsoft.AspNet.Antiforgery/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -4805,11 +4876,15 @@
           "System.Runtime": "4.0.0",
           "System.Runtime.Extensions": "4.0.0"
         },
+        "frameworkAssemblies": [
+          "mscorlib",
+          "System.Numerics"
+        ],
         "compile": {
-          "ref/dotnet/System.Numerics.Vectors.dll": {}
+          "ref/net46/System.Numerics.Vectors.dll": {}
         },
         "runtime": {
-          "lib/dotnet/System.Numerics.Vectors.dll": {}
+          "lib/net46/System.Numerics.Vectors.dll": {}
         }
       },
       "System.Reflection/4.0.0": {
@@ -4930,6 +5005,28 @@
     }
   },
   "libraries": {
+    "ImageProcessor/2.3.0": {
+      "type": "package",
+      "sha512": "ylRLILOtxb6ZN0fZbF/sdErqgqd7J2GP8FHYifDXF7C5dDgfFvRr8Zio1R3CNHGN+pY3hzcALBUyRzRxFPDN/g==",
+      "files": [
+        "ImageProcessor.2.3.0.nupkg",
+        "ImageProcessor.2.3.0.nupkg.sha512",
+        "ImageProcessor.nuspec",
+        "lib/net40/ImageProcessor.dll",
+        "lib/net45/ImageProcessor.dll"
+      ]
+    },
+    "ImageProcessor.Web/4.4.0": {
+      "type": "package",
+      "sha512": "sSBr9Aptvj0B6Wn/wNNLGa+FCm+o/0VTNplZuTLNiKSLcELQtk46Apd9xoGowCLcDeo4Bw0/hMT4I6DSS8eb8Q==",
+      "files": [
+        "content/web.config.transform",
+        "ImageProcessor.Web.4.4.0.nupkg",
+        "ImageProcessor.Web.4.4.0.nupkg.sha512",
+        "ImageProcessor.Web.nuspec",
+        "lib/net45/ImageProcessor.Web.dll"
+      ]
+    },
     "Microsoft.AspNet.Antiforgery/1.0.0-beta8": {
       "type": "package",
       "serviceable": true,
@@ -6841,8 +6938,9 @@
       "Microsoft.Framework.Logging.Debug >= 1.0.0-beta8",
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-beta8",
       "Microsoft.AspNet.WebApi.Client >= 5.2.3",
-      "Microsoft.AspNet.WebApi >= 5.2.3"
+      "Microsoft.AspNet.WebApi >= 5.2.3",
+      "ImageProcessor.Web >= 4.4.0"
     ],
-    "DNX,Version=v4.5.1": []
+    "DNX,Version=v4.6": []
   }
 }

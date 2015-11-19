@@ -15,19 +15,17 @@
 <body>
     @RenderBody()
 
-    <environment names="Development">
+    <environment names="Development,Staging,Production">
         <script src="~/lib/angular/angular.js"></script>
-        <script src="~/lib/webcamjs/webcam.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
-    <environment names="Staging,Production">
+    @*<environment names="Staging,Production">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"
                 asp-fallback-src="~/lib/angular/angular.min.js"
                 asp-fallback-test="window.angular">
         </script>
-        <script src="~/lib/webcamjs/webcam.min.js" asp-append-version="true"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+    </environment>*@
 
     @RenderSection("scripts", required: false)
 </body>
