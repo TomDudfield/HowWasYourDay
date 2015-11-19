@@ -24,8 +24,6 @@
             stream.onended = noStream;
 
             video.onloadedmetadata = function (e) { // Not firing in Chrome. See crbug.com/110938.
-            //    document.getElementById('splash').hidden = true;
-              //  document.getElementById('app').hidden = false;
             };
 
             // Since video.onloadedmetadata isn't firing for getUserMedia video, we have
@@ -33,8 +31,6 @@
             setTimeout(function () {
                 canvas.width = video.videoWidth;
                 canvas.height = video.videoHeight;
-             //   document.getElementById('splash').hidden = true;
-               // document.getElementById('app').hidden = false;
             }, 50);
         }
 
@@ -50,7 +46,6 @@
             $scope.department = "";
             $scope.options = [];
             $scope.imageCaptured = false;
-            $scope.imageDataUri = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
             $scope.emotions = "";
 
             $http.get("/api/emotion").success(function (data, status, headers, config) {
@@ -67,12 +62,8 @@
             $scope.departmentSelected = true;
             $scope.department = option;
             $scope.title = "How was your day?";
-
-            //temp
             $scope.imageCaptured = false;
-            $scope.imageDataUri = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
             $scope.emotions = "";
-            //temp
             
             navigator.getUserMedia({ video: true }, gotStream, noStream);
             $scope.working = false;
@@ -83,11 +74,13 @@
             $scope.title = "Thanks";
             
             var ctx = canvas.getContext('2d');
+            ctx.save();
             ctx.translate(video.videoWidth, 0);
             ctx.scale(-1, 1);
             ctx.drawImage(video, 0, 0);
 
             $scope.imageDataUri = canvas.toDataURL('image/jpeg', 95);
+            ctx.restore();
 
             $http.post('/api/emotion/', { 'department': $scope.department, 'image': $scope.imageDataUri }).success(function (data, status, headers, config) {
                 $scope.emotions = data;
@@ -96,8 +89,11 @@
                     ctx.beginPath();
                     ctx.lineWidth = "6";
                     ctx.strokeStyle = "red";
-                    ctx.rect(video.videoWidth - emotion.FaceRectangle.Left - emotion.FaceRectangle.Width, emotion.FaceRectangle.Top, emotion.FaceRectangle.Width, emotion.FaceRectangle.Height);
+                    ctx.rect(emotion.FaceRectangle.Left, emotion.FaceRectangle.Top, emotion.FaceRectangle.Width, emotion.FaceRectangle.Height);
                     ctx.stroke();
+                    ctx.fillStyle = "red";
+                    ctx.font = "30px Arial";
+                    ctx.fillText(emotion.Scores.TopScoreType, emotion.FaceRectangle.Left +6, emotion.FaceRectangle.Top + emotion.FaceRectangle.Height-6);
                 });
                 
                 $scope.imageDataUri = canvas.toDataURL('image/jpeg', 95);
