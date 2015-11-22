@@ -19,8 +19,8 @@
         <div ng-class="{show: imageCaptured, hide: !imageCaptured}">
             <div>
                 <canvas id="photo" style="display:none"></canvas>
-                <img src="{{imageDataUri}}" />
-                <div ng-repeat="emotion in emotions">
+                <img id="result" />
+                @*<div ng-repeat="emotion in emotions">
                     <div>TopScore: {{emotion.Scores.TopScore}}</div>
                     <div>TopScoreType: {{emotion.Scores.TopScoreType}}</div>
                     <br/>
@@ -28,7 +28,7 @@
                     <div>Top: {{emotion.FaceRectangle.Top}}</div>
                     <div>Width: {{emotion.FaceRectangle.Width}}</div>
                     <div>Height: {{emotion.FaceRectangle.Height}}</div>
-                </div>
+                </div>*@
             </div>
             <button class="btn" ng-click="selectDepartment('2')" ng-disabled="working">Next face</button>
             @*<button ng-click="loadDepartments()" ng-disabled="working">Next</button>*@

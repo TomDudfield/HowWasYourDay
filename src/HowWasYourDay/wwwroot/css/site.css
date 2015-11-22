@@ -5,21 +5,54 @@
     display: block
 }
 html {
+    height: 100%;
     background-color: gray;
 }
 body {
+    min-height: 100%;
     margin: 0;
 }
-video {
-    width: auto;
-    height: auto;
+div {
+    min-width: 100%;
     max-height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+video {
     max-width: 100%;
+    width: 100%;
+    max-height: 100%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
         -moz-transform: scaleX(-1);
         -o-transform: scaleX(-1);
         -webkit-transform: scaleX(-1);
     -ms-transform: scaleX(-1);
     transform: scaleX(-1);
+}
+
+
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.btn {
+        position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 200px;
 }
 
 .btn {
@@ -57,8 +90,4 @@ video {
 	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9',GradientType=0);
 	background-color:#e9e9e9;
-}
-.btn:active {
-	position:relative;
-	top:1px;
 }
