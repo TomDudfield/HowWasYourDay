@@ -51,59 +51,7 @@ namespace Microsoft.ProjectOxford.Emotion.Contract
         /// 
         /// </summary>
         public float Surprise { get; set; }
-
-        public float TopScore { get; set; }
-
-        public string TopScoreType { get; set; }
-
-        public void GetTopScore()
-        {
-            TopScore = Anger;
-            TopScoreType = "Anger";
-
-            if (Contempt > TopScore)
-            {
-                TopScore = Contempt;
-                TopScoreType = "Contempt";
-            }
-
-            if (Disgust > TopScore)
-            {
-                TopScore = Disgust;
-                TopScoreType = "Disgust";
-            }
-
-            if (Fear > TopScore)
-            {
-                TopScore = Fear;
-                TopScoreType = "Fear";
-            }
-
-            if (Happiness > TopScore)
-            {
-                TopScore = Happiness;
-                TopScoreType = "Happiness";
-            }
-
-            if (Neutral > TopScore)
-            {
-                TopScore = Neutral;
-                TopScoreType = "Neutral";
-            }
-
-            if (Sadness > TopScore)
-            {
-                TopScore = Sadness;
-                TopScoreType = "Sadness";
-            }
-
-            if (Surprise > TopScore)
-            {
-                TopScore = Surprise;
-                TopScoreType = "Surprise";
-            }
-        }
-
+        
         #region overrides
         public override bool Equals(object o)
         {

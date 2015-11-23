@@ -41,7 +41,7 @@ using Microsoft.ProjectOxford.Common;
 
 namespace Microsoft.ProjectOxford.Emotion
 {
-    internal interface IEmotionServiceClient
+    public interface IEmotionServiceClient
     {
         /// <summary>
         /// Recognize emotions on faces in an image.

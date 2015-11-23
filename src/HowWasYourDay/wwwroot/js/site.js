@@ -1,48 +1,11 @@
-﻿angular.module('EmotionApp', [])
+﻿navigator.getUserMedia = (navigator.getUserMedia ||
+                          navigator.webkitGetUserMedia ||
+                          navigator.mozGetUserMedia ||
+                          navigator.msGetUserMedia);
+window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+
+angular.module('EmotionApp', [])
     .controller('EmotionCtrl', function ($scope, $http) {
-        navigator.getUserMedia = (navigator.getUserMedia ||
-                                  navigator.webkitGetUserMedia ||
-                                  navigator.mozGetUserMedia ||
-                                  navigator.msGetUserMedia);
-        window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
-
-        var canvas = document.getElementById('photo');
-        var result = document.getElementById('result');
-        var video = document.getElementById('webcam');
-        
-        function gotStream(stream) {
-            if (video.mozSrcObject !== undefined) {
-                video.mozSrcObject = stream;
-            } else {
-                video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
-            };
-
-            video.onerror = function (e){ 
-                stream.stop();
-            };
-
-            stream.onended = noStream;
-
-            video.onloadedmetadata = function (e) { // Not firing in Chrome. See crbug.com/110938.
-            };
-
-            // Since video.onloadedmetadata isn't firing for getUserMedia video, we have
-            // to fake it.
-            setTimeout(function () {
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-            }, 50);
-        }
-
-        function noStream() {
-            alert('no camera');
-        }
-        if (!navigator.getUserMedia) {
-            alert('no camera');
-        } else {
-            navigator.getUserMedia({ video: true }, gotStream, noStream);
-        }
-
         $scope.loadDepartments = function () {
             $scope.working = true;
             $scope.title = "loading departments...";
@@ -73,15 +36,38 @@
             if (!navigator.getUserMedia) {
                 alert('no camera');
             } else {
-                navigator.getUserMedia({ video: true }, gotStream, noStream);
+                navigator.getUserMedia({ video: true },
+                    function gotStream(stream) {
+                        var video = document.getElementById('webcam');
+                        if (video.mozSrcObject !== undefined) {
+                            video.mozSrcObject = stream;
+                        } else {
+                            video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+                        };
+
+                        video.onerror = function (e) {
+                            stream.stop();
+                        };
+                    },
+                function noStream() {
+                    alert('no camera');
+                });
             }
+
             $scope.working = false;
         };
         $scope.capture = function () {
             $scope.working = true;
             $scope.imageCaptured = true;
             $scope.title = "Thanks";
-            
+
+            var result = document.getElementById('result');
+            var canvas = document.getElementById('photo');
+            var video = document.getElementById('webcam');
+
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+
             var ctx = canvas.getContext('2d');
             ctx.save();
             ctx.translate(video.videoWidth, 0);
@@ -97,11 +83,11 @@
                     ctx.beginPath();
                     ctx.lineWidth = "3";
                     ctx.strokeStyle = "red";
-                    ctx.rect(emotion.FaceRectangle.Left, emotion.FaceRectangle.Top, emotion.FaceRectangle.Width, emotion.FaceRectangle.Height);
+                    ctx.rect(emotion.Left, emotion.Top, emotion.Width, emotion.Height);
                     ctx.stroke();
                     ctx.fillStyle = "red";
                     ctx.font = "20px Arial";
-                    ctx.fillText(emotion.Scores.TopScoreType, emotion.FaceRectangle.Left +6, emotion.FaceRectangle.Top + emotion.FaceRectangle.Height-6);
+                    ctx.fillText(emotion.TopScoreType, emotion.Left + 6, emotion.Top + emotion.Height - 6);
                 });
 
                 result.src = canvas.toDataURL('image/jpeg', 95);

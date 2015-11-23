@@ -3,6 +3,7 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.ProjectOxford.Emotion;
 
 namespace HowWasYourDay
 {
@@ -39,8 +40,7 @@ namespace HowWasYourDay
             services.AddMvc();
 
             // Add application services.
-            //services.AddTransient<IEmailSender, AuthMessageSender>();
-            //services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddTransient<IEmotionServiceClient, EmotionServiceClient>(provider => new EmotionServiceClient("e5d15d97c41c4aa7bf042af46bb02e3f"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
