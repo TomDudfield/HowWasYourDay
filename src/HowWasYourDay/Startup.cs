@@ -34,9 +34,9 @@ namespace HowWasYourDay
             // Add framework services.
             services.AddEntityFramework()
                 .AddSqlServer();
-                //.AddDbContext<ApplicationDbContext>(options =>
-                //    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
-            
+            //.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+
             services.AddMvc();
 
             // Add application services.
@@ -59,22 +59,22 @@ namespace HowWasYourDay
                 app.UseExceptionHandler("/Home/Error");
 
                 // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
-                try
-                {
-                    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
-                        .CreateScope())
-                    {
-                        //serviceScope.ServiceProvider.GetService<ApplicationDbContext>()
-                        //     .Database.Migrate();
-                    }
-                }
-                catch { }
+                //try
+                //{
+                //    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+                //        .CreateScope())
+                //    {
+                //        //serviceScope.ServiceProvider.GetService<ApplicationDbContext>()
+                //        //     .Database.Migrate();
+                //    }
+                //}
+                //catch { }
             }
 
             app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
 
             app.UseStaticFiles();
-            
+
             // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
 
             app.UseMvc(routes =>

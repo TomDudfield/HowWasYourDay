@@ -83,8 +83,7 @@ angular.module('EmotionApp', [])
                     ctx.beginPath();
                     ctx.lineWidth = "3";
                     ctx.strokeStyle = "red";
-                    ctx.rect(emotion.Left, emotion.Top, emotion.Width, emotion.Height);
-                    ctx.stroke();
+                    ctx.strokeRect(emotion.Left, emotion.Top, emotion.Width, emotion.Height);
                     ctx.fillStyle = "red";
                     ctx.font = "20px Arial";
                     ctx.fillText(emotion.TopScoreType, emotion.Left + 6, emotion.Top + emotion.Height - 6);
